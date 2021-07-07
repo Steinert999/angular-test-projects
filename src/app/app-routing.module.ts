@@ -20,3 +20,8 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+export const RouteComponents = [
+  TodoCreateComponent,
+  TodoEditComponent,
+  TodoListComponent
+]
