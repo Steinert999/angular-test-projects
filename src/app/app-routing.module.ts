@@ -8,7 +8,7 @@ const routes: Routes = [
   {path: "todos",
   children: [
     {path: '', pathMatch:"full", component: TodoListComponent},
-    {path: 'edit/:id', component: TodoEditComponent},
+    {path: 'edit/:id', component: TodoCreateComponent},
     {path: 'create', component: TodoCreateComponent},
     {path: '**', redirectTo: ''}
   ]},
