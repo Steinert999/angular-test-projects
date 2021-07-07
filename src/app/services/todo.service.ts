@@ -1,8 +1,10 @@
+import { Todo } from './../models/todo';
+
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
-import { Todo } from '../models/todo';
+
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +13,7 @@ export class TodoService {
 
   apiUrl: string;
   httpOptions: {};
+  http: any;
 
   constructor(private HttpClient: HttpClient) {
     this.apiUrl = 'http://localhost:3000';
@@ -39,11 +42,13 @@ export class TodoService {
 
   createTodo(todo: Todo): Observable<Todo> {
     return this.HttpClient.post<Todo>(
-      `${this.apiUrl}/todo`,
+      `${this.apiUrl}/todos`,
       JSON.stringify(todo),
       this.httpOptions,
     );
   }
+
+
 
 
   handleError(error: any): Observable<never> {
@@ -56,4 +61,18 @@ export class TodoService {
 
     return throwError(message)
   }
+
+
+update(todo: Todo): Observable<Todo> {
+ this.apiUrl  + "/todos/" + todo.id;
+  return this.HttpClient.put<Todo>(this.apiUrl , todo);
+}
+
+delete(id : number): Observable<void>{
+  this.apiUrl  + "/todos/" + id;
+  return this.HttpClient.delete<void>(this.apiUrl);
+}
+
+
+
 }
