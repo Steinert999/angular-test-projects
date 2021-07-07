@@ -1,1 +1,27 @@
-<p>todo-list works!</p>
+<div class="container">
+  <div id="inner-container" *ngFor="let todo of todolist$ | async">
+    <mat-accordion displayMode="flat" hideToggle class="todo-expansion-panel">
+      <mat-expansion-panel [expanded]="!todo.done" [disabled]="todo.done">
+        <mat-expansion-panel-header>
+          <mat-panel-title *ngIf="todo.done">
+            <s>{{ todo.title }}</s>
+          </mat-panel-title>
+          <mat-panel-title *ngIf="!todo.done">
+            {{ todo.title }}
+          </mat-panel-title>
+          <mat-exspansion-panel-description>
+            {{ todo.day | date: "h:mm" }}
+          </mat-exspansion-panel-description>
+        </mat-expansion-panel-header>
+        <p class="mat-typograpy">{{ todo.description }}</p>
+      </mat-expansion-panel>
+    </mat-accordion>
+    <button mat-icon-button color="primary" (click)="updateTodo(todo)">
+      <mat-icon *ngIf="!todo.done" aria-hidden="true">done</mat-icon>
+      <mat-icon *ngIf="todo.done" aria-hidden="true">undo</mat-icon>
+    </button>
+    <button mat-icon-button color="warn" (click)="deleteTodo(todo.id)">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </div>
+</div>
