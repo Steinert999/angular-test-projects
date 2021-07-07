@@ -4,21 +4,21 @@
             "id": 0,
             "title": "criar escopo todo",
             "description" : "criar a ideia inicial do todo app",
-            "day": "",
+            "day": "01-01-2021 03:02:00",
             "done": true 
         },
         {
             "id": 1,
             "title": "criar CRUD todo",
             "description" : "criar as requisições padrões para funcionamento do todo",
-            "day": "",
+            "day": "12-15-2021 18:02:00",
             "done": false
         },
         {
             "id": 2,
             "title": "definir design todo",
             "description" : "definir estrutura de design",
-            "day": "",
+            "day": "05-18-2022 00:00:00",
             "done": false
         }
    ]
