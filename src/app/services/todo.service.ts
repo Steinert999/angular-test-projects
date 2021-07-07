@@ -29,6 +29,14 @@ export class TodoService {
       );
   }
 
+  getTodo(id: number): Observable<Todo> {
+    return this.HttpClient.get<Todo>(`${this.apiUrl}/todos/${id}`, this.httpOptions)
+      .pipe(
+        retry(1),
+        catchError(this.handleError)
+      );
+  }
+
   createTodo(todo: Todo): Observable<Todo> {
     return this.HttpClient.post<Todo>(
       `${this.apiUrl}/todo`,
