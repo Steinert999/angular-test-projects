@@ -1,0 +1,25 @@
+{
+    "todos": [
+        {
+            "id": 0,
+            "title": "criar escopo todo",
+            "description" : "criar a ideia inicial do todo app",
+            "day": "",
+            "done": true 
+        },
+        {
+            "id": 1,
+            "title": "criar CRUD todo",
+            "description" : "criar as requisições padrões para funcionamento do todo",
+            "day": "",
+            "done": false
+        },
+        {
+            "id": 2,
+            "title": "definir design todo",
+            "description" : "definir estrutura de design",
+            "day": "",
+            "done": false
+        }
+   ]
+} 
