@@ -33,8 +33,8 @@ export class TodoService {
     return this.HttpClient.post<Todo>(
       `${this.apiUrl}/todo`,
       JSON.stringify(todo),
-
-    )
+      this.httpOptions,
+    );
   }
 
 
