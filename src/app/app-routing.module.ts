@@ -5,9 +5,9 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  {path: "todos", 
+  {path: "todos",
   children: [
-    {path: '', component: TodoListComponent},
+    {path: '', pathMatch:"full", component: TodoListComponent},
     {path: 'edit/:id', component: TodoEditComponent},
     {path: 'create', component: TodoCreateComponent},
     {path: '**', redirectTo: ''}
