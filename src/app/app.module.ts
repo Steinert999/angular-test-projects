@@ -5,16 +5,25 @@ import { AppRoutingModule, RouteComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TodoMaterialModule } from './material.modules';
+import { HttpClientModule } from '@angular/common/http';
+
+import { FooterComponent } from './components/template/footer/footer.component';
+import {HeaderComponent } from './components/template/header/header.component';
+
 @NgModule({
   declarations: [
     AppComponent,
-    RouteComponents
+    RouteComponents,
+    FooterComponent,
+    HeaderComponent
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    TodoMaterialModule
+    TodoMaterialModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent],

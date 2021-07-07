@@ -12,16 +12,14 @@ import { retry, catchError } from 'rxjs/operators';
 export class TodoService {
 
   apiUrl: string;
-  httpOptions: {};
-  http: any;
-
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-type': 'application/json'
+    })
+  }
   constructor(private HttpClient: HttpClient) {
     this.apiUrl = 'http://localhost:3000';
-    this.httpOptions = {
-      hearder: new HttpHeaders({
-        'Content-type': 'application/json'
-      })
-    }
+
   }
 
   getTodos(): Observable<Todo[]> {
@@ -48,9 +46,6 @@ export class TodoService {
     );
   }
 
-
-
-
   handleError(error: any): Observable<never> {
     let message = '';
     if (error?.error instanceof ErrorEvent) {
@@ -62,17 +57,12 @@ export class TodoService {
     return throwError(message)
   }
 
+  update(todo: Todo): Observable<Todo> {
+    return this.HttpClient.put<Todo>(`${this.apiUrl}/todos/${todo?.id}`, todo);
+  }
 
-update(todo: Todo): Observable<Todo> {
- this.apiUrl  + "/todos/" + todo.id;
-  return this.HttpClient.put<Todo>(this.apiUrl , todo);
-}
-
-delete(id : number): Observable<void>{
-  this.apiUrl  + "/todos/" + id;
-  return this.HttpClient.delete<void>(this.apiUrl);
-}
-
-
+  delete(id: number) {
+    return this.HttpClient.delete<void>(`${this.apiUrl}/${id}`);
+  }
 
 }

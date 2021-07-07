@@ -3,5 +3,5 @@ export interface Todo {
     description: string,
     day: Date,
     done: boolean,
-    id?: number,
+    id?: any,
 }
