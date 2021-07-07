@@ -17,8 +17,6 @@ export class TodoService {
       'Content-type': 'application/json'
     })
   }
-  http: any;
-
   constructor(private HttpClient: HttpClient) {
     this.apiUrl = 'http://localhost:3000';
 
@@ -41,11 +39,10 @@ export class TodoService {
   }
 
   createTodo(todo: Todo): Observable<Todo> {
-    console.log(todo);
     return this.HttpClient.post<Todo>(
       `${this.apiUrl}/todos`,
       JSON.stringify(todo),
-     this.httpOptions,
+      this.httpOptions,
     );
   }
 
@@ -60,17 +57,12 @@ export class TodoService {
     return throwError(message)
   }
 
+  update(todo: Todo): Observable<Todo> {
+    return this.HttpClient.put<Todo>(`${this.apiUrl}/todos/${todo?.id}`, todo);
+  }
 
-update(todo: Todo): Observable<Todo> {
- this.apiUrl  + "/todos/" + todo.id;
-  return this.HttpClient.put<Todo>(this.apiUrl , todo);
-}
-
-delete(id : number): Observable<void>{
-  this.apiUrl  + "/todos/" + id;
-  return this.HttpClient.delete<void>(this.apiUrl);
-}
-
-
+  delete(id: number) {
+    return this.HttpClient.delete<void>(`${this.apiUrl}/${id}`);
+  }
 
 }
