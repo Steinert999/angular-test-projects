@@ -6,17 +6,15 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TodoMaterialModule } from './material.modules';
 import { HttpClientModule } from '@angular/common/http';
-
-import { FooterComponent } from './components/template/footer/footer.component';
-import {HeaderComponent } from './components/template/header/header.component';
+import { MainComponent } from './components/template/main/main.component';
+import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RouteComponents,
-    FooterComponent,
-    HeaderComponent
-
+    MainComponent,
+    ConfirmDialogComponent
   ],
   imports: [
     BrowserModule,

@@ -1,10 +1,11 @@
 .container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   margin-top: 20px;
-  height: 80%;
-  display: grid;
-  grid-template-columns: auto auto auto auto;
 
   #inner-container {
+    margin: 20px;
     display: flex;
     justify-content: space-around;
     align-items: flex-start;
@@ -16,6 +17,7 @@
       border-radius: 0px;
 
       .mat-expansion-panel-header {
+        font-size: 15pt;
         padding-left: 10px;
         padding-right: 5px;
         border-left: 4px solid rgb(102, 51, 153);
@@ -23,13 +25,21 @@
         align-items: center;
 
         .mat-expansion-panel-header-title {
+          word-wrap: break-word;
           align-items: center;
         }
+      }
+      .panel-description {
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: flex-end;
+        align-items: center;
       }
     }
   }
 }
 ::ng-deep .mat-expansion-panel-body {
+  font-size: 13pt;
   border-left: 4px solid rgb(102, 51, 153);
   display: flex;
   justify-content: space-around;
@@ -48,13 +58,13 @@
 .add-button {
   width: 100px;
   height: 100px;
-  position: absolute;
+  position: fixed;
   top: 50%;
   bottom: 50%;
-  left: -70px;
-  transition: left 0.2s;
+  right: -50px;
+  transition: right 0.2s;
   transition-timing-function: linear;
   &:hover {
-    left: 5px;
+    right: 5px;
   }
 }

@@ -1,8 +1,13 @@
+import { MatDialog } from '@angular/material/dialog';
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { Todo } from 'src/app/models/todo';
 import { TodoService } from 'src/app/services/todo.service';
+import {
+  ConfirmDialogComponent,
+  DialogAction,
+} from '../confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-todo-create',
@@ -10,7 +15,12 @@ import { TodoService } from 'src/app/services/todo.service';
   styleUrls: ['./todo-create.component.scss'],
 })
 export class TodoCreateComponent implements OnInit {
-  constructor(private activatedRoute: ActivatedRoute, private router: Router, private service: TodoService) { }
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private router: Router,
+    private service: TodoService,
+    private dialog: MatDialog
+  ) {}
 
   title = '';
   routeId = '';
@@ -40,7 +50,7 @@ export class TodoCreateComponent implements OnInit {
         this.title = "Editar Tarefa"
       })
     } else {
-      this.title = "Nova Tarefa"
+      this.title = 'Nova Tarefa';
     }
   }
 
@@ -51,8 +61,6 @@ export class TodoCreateComponent implements OnInit {
 
   save(): void {
     const todo: Todo = this.formGroup.value as Todo
-
-    console.log(this.formGroup.get('title')?.invalid)
     if(this.formGroup.valid){
       if (todo.id) {
         this.service.update(todo).subscribe(() => {
@@ -69,7 +77,11 @@ export class TodoCreateComponent implements OnInit {
     this.router.navigate(['/todos']);
   }
 
-
-
-
+  validate(action: DialogAction.CREATE | DialogAction.UPDATE) {
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      width: '250px',
+      data: { action: action },
+    });
+    return dialogRef.afterClosed();
+  }
 }

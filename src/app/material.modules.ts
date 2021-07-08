@@ -11,7 +11,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatDialogModule } from '@angular/material/dialog';
 
 // vamos construir nossos arrays de registro
 @NgModule({
@@ -26,7 +26,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatDatepickerModule,
     MatNativeDateModule,
     MatSlideToggleModule,
-    MatFormFieldModule,
+    MatDialogModule,
   ],
   exports: [
     MatTableModule,
@@ -45,7 +45,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatCheckboxModule,
     MatButtonModule,
     MatIconModule,
-    MatFormFieldModule,
+    MatDialogModule
   ]
 })
 export class TodoMaterialModule { }
