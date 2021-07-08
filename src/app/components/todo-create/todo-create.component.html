@@ -1,34 +1,35 @@
 <div class="container">
   <h1>{{title}}</h1>
 
-  <form class="form mat-elevation-z8">
+  <form [formGroup]="formGroup" class="form mat-elevation-z8">
     <div class="form-group">
-    <mat-form-field class="full-width" appearance="fill">
-      <mat-label>Nome da tarefa</mat-label>
-      <input [(ngModel)]="todo.title" name="title" id="title" matInput placeholder="Arrumar o quarto" />
-    </mat-form-field>
-    <mat-form-field class="full-width" appearance="fill">
-      <mat-label>Descrição</mat-label>
-      <input [(ngModel)]="todo.description" name="description" id="description" matInput
-        placeholder="Limpar o guarda roupas" />
-    </mat-form-field>
-    <mat-form-field class="full-width" appearance="fill">
-      <mat-label>Data</mat-label>
-      <input matInput [(ngModel)]="todo.day" [matDatepicker]="picker" name="day" />
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
-    <mat-slide-toggle class="mb-20" [(ngModel)]="todo.done" name="done">
-      Concluído?</mat-slide-toggle>
+      <mat-form-field class="full-width mb-5" appearance="fill">
+        <mat-label>Nome da tarefa</mat-label>
+        <input formControlName="title" name="title" id="title" matInput placeholder="Arrumar o quarto" required />
+        <mat-error *ngIf="formGroup.get('title')?.invalid">{{getErrorMessage('title')}}</mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width mb-5" appearance="fill">
+        <mat-label>Descrição</mat-label>
+        <input formControlName="description" name="description" id="description" matInput placeholder="Limpar o guarda roupas" required />
+        <mat-error *ngIf="formGroup.get('description')?.invalid">{{getErrorMessage('description')}}</mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width mb-5" appearance="fill">
+        <mat-label>Data</mat-label>
+        <input formControlName="day" matInput [matDatepicker]="picker" name="day" />
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <mat-slide-toggle formControlName="done" class="mb-20" name="done">
+        Concluído?</mat-slide-toggle>
 
-    <div class="buttons-cont">
-      <button class="button mat-elevation-z8" (click)="save()" mat-raised-button color="primary">
-        Salvar
-      </button>
-      <button class="button mat-elevation-z8" (click)="cancel()" mat-stroked-button color="warn">
-        Cancelar
-      </button>
-    </div>
+      <div class="buttons-cont">
+        <button type="submit" class="button mat-elevation-z8" (click)="save()" mat-raised-button color="primary">
+          Salvar
+        </button>
+        <button class="button mat-elevation-z8" (click)="cancel()" mat-stroked-button color="warn">
+          Cancelar
+        </button>
+      </div>
     </div>
   </form>
 </div>

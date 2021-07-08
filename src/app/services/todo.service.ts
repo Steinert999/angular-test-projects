@@ -62,7 +62,6 @@ export class TodoService {
   }
 
   delete(id: number) {
-    console.log('teste', id);
     return this.HttpClient.delete<Todo>(`${this.apiUrl}/todos/${id}`);
   }
 
