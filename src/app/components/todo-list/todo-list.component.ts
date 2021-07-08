@@ -1,5 +1,5 @@
 import { Router } from '@angular/router';
-import { Component, OnInit,} from '@angular/core';
+import { Component, OnInit, } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { TodoService } from './../../services/todo.service';
 import { Todo } from 'src/app/models/todo';
@@ -12,22 +12,24 @@ import { Todo } from 'src/app/models/todo';
 export class TodoListComponent implements OnInit {
 
 
-    todolist$!: Observable<Todo[]>;
+  todolist$!: Observable<Todo[]>;
   constructor(private todoService: TodoService,
-              private router: Router) { }
+    private router: Router) { }
 
   ngOnInit(): void {
     this.todolist$ = this.todoService.getTodos();
   }
 
-  updateStatusTodo(todo: Todo):void {
+  updateStatusTodo(todo: Todo): void {
     todo.done = !todo.done;
     this.todoService.update(todo);
   }
 
   deleteTodo(todoId: number | undefined): void {
     if (todoId) {
-     this.todoService.delete(todoId);
+      this.todoService.delete(todoId).subscribe(() => {
+        this.todolist$ = this.todoService.getTodos();
+      });
     }
   }
 }

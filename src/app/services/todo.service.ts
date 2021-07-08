@@ -62,7 +62,8 @@ export class TodoService {
   }
 
   delete(id: number) {
-    return this.HttpClient.delete<void>(`${this.apiUrl}/${id}`);
+    console.log('teste', id);
+    return this.HttpClient.delete<Todo>(`${this.apiUrl}/todos/${id}`);
   }
 
 }
