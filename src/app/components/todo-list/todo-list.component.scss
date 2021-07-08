@@ -1,47 +1,60 @@
-::ng-deep .mat-expansion-panel-body {
-  border-left: 4px solid rgb(102, 51, 153);
-  padding-top: 2px;
-}
 .container {
-  background-color: #f8f7f0;
-  padding: 10px;
-  margin: auto;
-  align-items: center;
-  max-width: 400px;
-  display: flex;
-  flex-direction: column;
-
-  mat-accordion {
-    max-width: 200px;
-  }
+  margin-top: 20px;
+  height: 80%;
+  display: grid;
+  grid-template-columns: auto auto auto auto;
 
   #inner-container {
-    display: grid;
-    grid-template-columns: auto auto auto;
-    align-items: center;
-  }
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    .mat-expansion-panel {
+      background-color: #ffffff;
+      border: 0.5px solid rgb(102, 51, 153, 0.1);
+      box-shadow: none;
+      padding-bottom: 2px;
+      border-radius: 0px;
 
-  .mat-expansion-panel {
-    background-color: #ffffff;
-    border: 0.5px solid rgb(102, 51, 153, 0.1);
-    box-shadow: none;
-    padding-top: 2px;
-    padding-bottom: 2px;
-    border-radius: 0px;
-
-    .mat-expansion-panel-header {
-      padding-left: 10px;
-      border-left: 4px solid rgb(102, 51, 153);
-      justify-content: right;
-      align-items: center;
-
-      .mat-expansion-panel-header-title {
+      .mat-expansion-panel-header {
+        padding-left: 10px;
+        padding-right: 5px;
+        border-left: 4px solid rgb(102, 51, 153);
+        justify-content: right;
         align-items: center;
+
+        .mat-expansion-panel-header-title {
+          align-items: center;
+        }
       }
     }
-    p {
-      font-weight: 300;
-      max-width: 150px;
-    }
+  }
+}
+::ng-deep .mat-expansion-panel-body {
+  border-left: 4px solid rgb(102, 51, 153);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  p {
+    font-weight: 300;
+    width: 150px;
+    word-wrap: break-word;
+  }
+  a {
+    padding: 0;
+  }
+}
+
+.add-button {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top: 50%;
+  bottom: 50%;
+  left: -70px;
+  transition: left 0.2s;
+  transition-timing-function: linear;
+  &:hover {
+    left: 5px;
   }
 }

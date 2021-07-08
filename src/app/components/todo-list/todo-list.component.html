@@ -1,6 +1,10 @@
 <div class="container">
   <div id="inner-container" *ngFor="let todo of todolist$ | async">
-    <mat-accordion displayMode="flat" hideToggle class="todo-expansion-panel">
+    <mat-accordion
+      displayMode="flat"
+      hideToggle
+      class="todo-expansion-panel mat-elevation-z4"
+    >
       <mat-expansion-panel [expanded]="!todo.done" [disabled]="todo.done">
         <mat-expansion-panel-header>
           <mat-panel-title *ngIf="todo.done">
@@ -11,17 +15,28 @@
           </mat-panel-title>
           <mat-exspansion-panel-description>
             {{ todo.day | date: "h:mm" }}
+            <button
+              mat-icon-button
+              color="primary"
+              (click)="updateStatusTodo(todo)"
+            >
+              <mat-icon *ngIf="!todo.done" aria-hidden="true">done</mat-icon>
+              <mat-icon *ngIf="todo.done" aria-hidden="true">undo</mat-icon>
+            </button>
+            <button mat-icon-button color="warn" (click)="deleteTodo(todo.id)">
+              <mat-icon>delete</mat-icon>
+            </button>
           </mat-exspansion-panel-description>
         </mat-expansion-panel-header>
-        <p class="mat-typograpy">{{ todo.description }}</p>
+        <p>{{ todo.description }}</p>
+        <a mat-button [routerLink]="['edit', todo.id]">
+          <mat-icon>edit</mat-icon>
+        </a>
       </mat-expansion-panel>
     </mat-accordion>
-    <button mat-icon-button color="primary" (click)="updateTodo(todo)">
-      <mat-icon *ngIf="!todo.done" aria-hidden="true">done</mat-icon>
-      <mat-icon *ngIf="todo.done" aria-hidden="true">undo</mat-icon>
-    </button>
-    <button mat-icon-button color="warn" (click)="deleteTodo(todo.id)">
-      <mat-icon>delete</mat-icon>
-    </button>
   </div>
 </div>
+
+<button class="add-button" mat-fab [routerLink]="['create']">
+  <mat-icon>add</mat-icon>
+</button>

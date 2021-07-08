@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit,} from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { TodoService } from './../../services/todo.service';
@@ -12,19 +13,19 @@ export class TodoListComponent implements OnInit {
 
 
     todolist$!: Observable<Todo[]>;
-  constructor(private todoService: TodoService) { }
+  constructor(private todoService: TodoService,
+              private router: Router) { }
 
   ngOnInit(): void {
     this.todolist$ = this.todoService.getTodos();
   }
 
-  updateTodo(todo: Todo):void {
+  updateStatusTodo(todo: Todo):void {
     todo.done = !todo.done;
     this.todoService.update(todo);
   }
 
   deleteTodo(todoId: number | undefined): void {
-    console.log(todoId);
     if (todoId) {
      this.todoService.delete(todoId);
     }
