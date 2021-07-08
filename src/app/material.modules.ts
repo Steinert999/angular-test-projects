@@ -9,8 +9,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatInputModule} from '@angular/material/input';
 import {MatDatepickerModule} from '@angular/material/datepicker';
- import { MatNativeDateModule } from '@angular/material/core';
- import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { MatNativeDateModule } from '@angular/material/core';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatDialogModule} from '@angular/material/dialog';
 
 // vamos construir nossos arrays de registro
 @NgModule({
@@ -24,9 +25,8 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
  MatButtonModule,
  MatDatepickerModule,
  MatNativeDateModule,
- MatSlideToggleModule
-
-
+ MatSlideToggleModule,
+ MatDialogModule,
  ],
  exports: [
  MatTableModule,
@@ -44,8 +44,8 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
  MatExpansionModule,
  MatCheckboxModule,
  MatButtonModule,
- MatIconModule
-
+ MatIconModule,
+ MatDialogModule
  ]
 })
 export class TodoMaterialModule{}

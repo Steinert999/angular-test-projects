@@ -7,13 +7,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TodoMaterialModule } from './material.modules';
 import { HttpClientModule } from '@angular/common/http';
 import { MainComponent } from './components/template/main/main.component';
+import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RouteComponents,
-    MainComponent
-
+    MainComponent,
+    ConfirmDialogComponent
   ],
   imports: [
     BrowserModule,
