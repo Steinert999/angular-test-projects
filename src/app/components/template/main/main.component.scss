@@ -1,0 +1,26 @@
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 8%;
+  width: 100%;
+  z-index: 2;
+  span {
+    font-size: 24pt;
+  }
+  mat-icon {
+    padding-right: 40px;
+    padding-bottom: 25px;
+    font-size: 40pt;
+  }
+}
+.header {
+  display: flex;
+  align-items: center;
+  z-index: 1;
+  font-size: 24pt;
+  mat-icon {
+    padding-bottom: 10px;
+    font-size: 24pt;
+  }
+}

@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { FooterComponent } from './components/template/footer/footer.component';
 import {HeaderComponent } from './components/template/header/header.component';
+import { MainComponent } from './components/template/main/main.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import {HeaderComponent } from './components/template/header/header.component';
     RouteComponents,
     FooterComponent,
     HeaderComponent
+    MainComponent
 
   ],
   imports: [
