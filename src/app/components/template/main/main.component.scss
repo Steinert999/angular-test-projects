@@ -1,8 +1,9 @@
 .footer {
+  position: fixed;
+  bottom: 0px;
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  height: 8%;
   width: 100%;
   z-index: 2;
   span {
@@ -15,6 +16,7 @@
   }
 }
 .header {
+  min-width: 500px;
   display: flex;
   align-items: center;
   z-index: 1;
