@@ -1,5 +1,4 @@
 import { TodoCreateComponent } from './components/todo-create/todo-create.component';
-import { TodoEditComponent } from './components/todo-edit/todo-edit.component';
 import { TodoListComponent } from './components/todo-list/todo-list.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -22,6 +21,5 @@ const routes: Routes = [
 export class AppRoutingModule { }
 export const RouteComponents = [
   TodoCreateComponent,
-  TodoEditComponent,
   TodoListComponent
 ]
