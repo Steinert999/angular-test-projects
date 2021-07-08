@@ -26,7 +26,7 @@ export class TodoListComponent implements OnInit {
   }
 
   deleteTodo(todoId: number | undefined): void {
-    if (todoId) {
+    if (todoId !== undefined) {
       this.todoService.delete(todoId).subscribe(() => {
         this.todolist$ = this.todoService.getTodos();
       });
